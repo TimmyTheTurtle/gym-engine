@@ -1,0 +1,75 @@
+# Build directories
+/build/
+/out/
+/bin/
+/obj/
+/cmake-build-*/
+/dist/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CTestTestfile.cmake
+cmake_install.cmake
+compile_commands.json
+Makefile
+
+# Ninja
+.ninja_deps
+.ninja_log
+
+# Visual Studio
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln.docstates
+
+# VS Code
+# Keep repo-level tasks/launch configs; ignore per-machine workspaces/state.
+.vscode/.history/
+.vscode/*.code-workspace.*
+.vscode/*.code-workspace.user
+
+# JetBrains
+.idea/
+
+# Xcode
+DerivedData/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Coverage / profiling
+*.gcda
+*.gcno
+*.profraw
+*.profdata
+
+# Python cache, if you use scripts later
+__pycache__/
+*.pyc
+
+# App-specific generated assets
+/generated/
+/captures/
+/screenshots/
+/exports/
+
+# Local notes
+/local/

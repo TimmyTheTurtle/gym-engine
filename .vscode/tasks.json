@@ -1,0 +1,52 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake: Configure",
+            "type": "shell",
+            "command": "call \"C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvars64.bat\" && \"C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe\" -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_VS_PLATFORM_NAME=x64 -DCMAKE_C_COMPILER=\"%VCToolsInstallDir%\\bin\\Hostx64\\x64\\cl.exe\" -DCMAKE_CXX_COMPILER=\"%VCToolsInstallDir%\\bin\\Hostx64\\x64\\cl.exe\" -DCMAKE_LINKER=\"%VCToolsInstallDir%\\bin\\Hostx64\\x64\\link.exe\" -DCMAKE_AR=\"%VCToolsInstallDir%\\bin\\Hostx64\\x64\\lib.exe\"",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH};C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64;C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja"
+                },
+                "shell": {
+                    "executable": "C:/Windows/System32/cmd.exe",
+                    "args": [
+                        "/C"
+                    ]
+                }
+            },
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "CMake: Build gym_studio",
+            "type": "shell",
+            "command": "call \"C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvars64.bat\" && \"C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe\" --build build --config Debug --target gym_studio",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH};C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64;C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja"
+                },
+                "shell": {
+                    "executable": "C:/Windows/System32/cmd.exe",
+                    "args": [
+                        "/C"
+                    ]
+                }
+            },
+            "dependsOn": "CMake: Configure",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "always"
+            }
+        }
+    ]
+}

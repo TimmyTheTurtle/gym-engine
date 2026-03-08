@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Gym Studio (CMake Debug)",
+            "type": "cmake",
+            "request": "launch",
+            "cmakeDebugType": "default",
+            "target": "gym_studio",
+            "buildTarget": "gym_studio",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "CMake: Build gym_studio",
+            "environment": []
+        },
+        {
+            "name": "Gym Studio (Debug)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/apps/gym-studio/gym_studio.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "integratedTerminal",
+            "preLaunchTask": "CMake: Build gym_studio",
+            "environment": []
+        }
+    ]
+}

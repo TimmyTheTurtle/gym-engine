@@ -210,3 +210,21 @@ gym-engine/
 │   └── algorithms-geometry.md
 └── apps/
     └── gym-studio/
+
+## C++ Vertical Slice
+
+### Build
+
+1. `cmake -S . -B build`
+2. `cmake --build build`
+3. Run `./build/apps/gym-studio/gym_studio` (Windows users can run the `.exe` in the same folder)
+
+The CMake tree wires together:
+
+- `engine/` – core application shell, shared math utilities, and a lightweight rendering abstraction.
+- `experiments/` – placeholder modules for `bezier_lab`, `parametric_curves`, `transform_rosettes`, `scalar_fields`, and `noise_terrain`.
+- `apps/gym-studio/` – simple launcher that registers experiments, drives the update/render loop, and prints what the rendering system would draw.
+
+### Visual Goals
+
+This scaffolding intentionally keeps the first iteration as a clear vertical slice: an `AppShell` that owns an `ExperimentLauncher`, cycles through parameterized experiments, and records line/point output via the lightweight renderer so you can see the visual story in text. Each experiment follows the project rules by naming a concept, controlling parameters (through simple timing), and producing visible tracing data for curves, scalar results, and terrain profiles.
