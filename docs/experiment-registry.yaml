@@ -1,0 +1,111 @@
+experiments:
+
+  bezier_lab:
+    concepts:
+      - interpolation
+      - affine combinations
+      - parametric curves
+
+    labs:
+      - bezier-lab
+
+    gyms:
+      - prueitt-mathematics
+      - algorithms-geometry
+
+    visual_output:
+      - curves
+      - control polygons
+
+    description: |
+      Demonstrates de Casteljau construction and nested interpolation
+      to build Bézier curves and explore curve geometry.
+
+  scalar_fields:
+    concepts:
+      - multivariable functions
+      - gradients
+      - scalar fields
+
+    labs:
+      - scalar-field-lab
+
+    gyms:
+      - prueitt-mathematics
+      - simulation
+      - ai-learning
+
+    visual_output:
+      - grayscale field
+      - contour lines
+      - gradient arrows
+
+    description: |
+      Visualizes functions of two variables and explores gradients,
+      contour maps, and field interpretation.
+
+  reaction_diffusion:
+    concepts:
+      - diffusion
+      - coupled systems
+      - emergent pattern formation
+
+    labs:
+      - reaction-diffusion-lab
+
+    gyms:
+      - simulation
+      - emergence
+      - prueitt-mathematics
+
+    visual_output:
+      - evolving patterns
+      - biological-style structures
+
+    description: |
+      Simulates a two-field reaction diffusion system producing
+      stripes, spots, and other emergent patterns.
+
+  maze_pathfinding:
+    concepts:
+      - graph search
+      - pathfinding
+      - exploration
+
+    labs:
+      - pathfinding-lab
+
+    gyms:
+      - algorithms-geometry
+      - ai-learning
+
+    visual_output:
+      - search frontier
+      - explored nodes
+      - solution path
+
+    description: |
+      Visualizes search algorithms such as BFS, DFS, and A*
+      on grid mazes.
+
+  plant_growth_lsystem:
+    concepts:
+      - recursion
+      - rewriting systems
+      - procedural growth
+
+    labs:
+      - lsystem-lab
+
+    gyms:
+      - algorithms-geometry
+      - emergence
+      - simulation
+
+    visual_output:
+      - branching structures
+      - plant-like growth
+
+    description: |
+      Uses L-systems to generate recursive branching structures
+      resembling plants.

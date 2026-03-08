@@ -1,0 +1,176 @@
+concepts:
+
+  interpolation:
+    status: active
+    coverage: medium
+    experiments:
+      - bezier_lab
+      - parametric_curves
+    labs:
+      - bezier-lab
+      - parametric-curves-lab
+    gyms:
+      - prueitt-mathematics
+      - algorithms-geometry
+    notes: >
+      Good early coverage. Could be strengthened with spline subdivision
+      or curve fitting experiments.
+    suggested_next:
+      - bezier_subdivision
+      - spline_playground
+
+  gradients:
+    status: active
+    coverage: medium
+    experiments:
+      - scalar_fields
+      - contour_gradient_viewer
+      - thermal_erosion
+    labs:
+      - scalar-field-lab
+      - terrain-lab
+    gyms:
+      - prueitt-mathematics
+      - simulation
+      - ai-learning
+    notes: >
+      Strong cross-gym concept. Important bridge between calculus,
+      optimization, and simulation.
+    suggested_next:
+      - loss_landscape_descent
+      - gradient_flow_particles
+
+  recursion:
+    status: active
+    coverage: medium
+    experiments:
+      - maze_pathfinding
+      - plant_growth_lsystem
+    labs:
+      - pathfinding-lab
+      - lsystem-lab
+    gyms:
+      - algorithms-geometry
+      - emergence
+    notes: >
+      Good start, but could use more purely geometric recursion examples.
+    suggested_next:
+      - recursive_tree_geometry
+      - fractal_subdivision
+
+  diffusion:
+    status: active
+    coverage: medium
+    experiments:
+      - reaction_diffusion
+      - thermal_erosion
+    labs:
+      - reaction-diffusion-lab
+      - terrain-lab
+    gyms:
+      - simulation
+      - emergence
+      - prueitt-mathematics
+    notes: >
+      Important simulation concept. Could benefit from a simpler pure diffusion
+      experiment to isolate the behavior.
+    suggested_next:
+      - diffusion_stepper
+      - heat_field
+
+  pathfinding:
+    status: active
+    coverage: low
+    experiments:
+      - maze_pathfinding
+    labs:
+      - pathfinding-lab
+    gyms:
+      - algorithms-geometry
+      - ai-learning
+    notes: >
+      Present but currently concentrated in one experiment.
+    suggested_next:
+      - weighted_pathfinding
+      - ant_colony_paths
+      - rl_grid_agent
+
+  flocking:
+    status: planned
+    coverage: low
+    experiments:
+      - flocking
+    labs:
+      - flocking-lab
+    gyms:
+      - emergence
+      - ai-learning
+      - simulation
+    notes: >
+      Important emergent multi-agent concept with strong visual reward.
+    suggested_next:
+      - flocking_with_obstacles
+      - predator_prey_flocking
+
+  optimization:
+    status: planned
+    coverage: low
+    experiments: []
+    labs:
+      - optimization-lab
+    gyms:
+      - ai-learning
+      - prueitt-mathematics
+    notes: >
+      Important gap. Should be introduced visually through contour surfaces
+      and descent trajectories.
+    suggested_next:
+      - loss_landscape_descent
+      - hill_climber_particles
+
+  monte_carlo:
+    status: planned
+    coverage: low
+    experiments: []
+    labs:
+      - monte-carlo-lab
+    gyms:
+      - prueitt-mathematics
+      - ai-learning
+    notes: >
+      Important for probability and numerical integration. Not yet implemented.
+    suggested_next:
+      - monte_carlo_area
+      - monte_carlo_field_integration
+
+  eigenvectors:
+    status: future
+    coverage: none
+    experiments: []
+    labs:
+      - eigen-lab
+    gyms:
+      - prueitt-mathematics
+      - ai-learning
+    notes: >
+      Important concept for linear algebra, PCA, and dynamic systems.
+    suggested_next:
+      - eigenvector_viewer
+      - pca_viewer
+
+  procedural_growth:
+    status: active
+    coverage: low
+    experiments:
+      - plant_growth_lsystem
+    labs:
+      - lsystem-lab
+    gyms:
+      - algorithms-geometry
+      - emergence
+      - simulation
+    notes: >
+      Very promising curiosity-driven area that can expand naturally.
+    suggested_next:
+      - space_colonization_tree
+      - tropism_growth

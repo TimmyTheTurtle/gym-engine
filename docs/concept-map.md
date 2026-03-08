@@ -1,117 +1,152 @@
-# Experiment Template
+# Concept Map
 
-Use this template whenever adding a new concept or experiment.
+This file tracks which concepts are covered by which experiments.
 
----
-
-## Experiment Name
-
-Short descriptive name.
-
-Example:
-- bezier_lab
-- reaction_diffusion
-- plant_growth_lsystem
+It exists to:
+- reveal gaps
+- show overlap
+- prevent accidental neglect of major skills
+- support adding new concepts without backtracking
 
 ---
 
-## Summary
+## Mathematics
 
-One paragraph describing what appears on screen and why the experiment matters.
+- linear algebra:
+  - bezier_lab
+  - transform_rosettes
+  - contour_gradient_viewer
+  - flocking
 
----
+- homogeneous linear systems:
+  - transform_rosettes
+  - nullspace_visualizer (future)
+  - eigenvector_viewer (future)
 
-## Concepts Trained
+- multivariable calculus:
+  - scalar_fields
+  - contour_gradient_viewer
+  - thermal_erosion
+  - reaction_diffusion
 
-List the concepts this experiment exercises.
+- integrals:
+  - parametric_curves
+  - scalar_fields
+  - monte_carlo_field_integration (future)
 
-Examples:
-- recursion
-- gradients
-- multivariable calculus
-- pathfinding
-- stochastic systems
-- swarm intelligence
-- function approximation
+- probability:
+  - noise_terrain
+  - reaction_diffusion
+  - maze_pathfinding (search randomness variants)
+  - monte_carlo_area (future)
 
----
-
-## Gyms
-
-List the Gyms this experiment belongs to.
-
-Examples:
-- Prueitt Mathematics Gym
-- Simulation Gym
-- AI & Learning Gym
-- Emergence Gym
-- Algorithms & Geometry Gym
-
-Experiments may belong to multiple Gyms.
-
----
-
-## Visual System
-
-Describe what the user sees.
-
-Examples:
-- a curve being constructed over time
-- particles moving through a vector field
-- a terrain smoothing under erosion
-- a flock coordinating from simple rules
-- a plant growing recursively
+- numerical methods:
+  - contour_gradient_viewer
+  - thermal_erosion
+  - reaction_diffusion
 
 ---
 
-## Parameters
+## Simulation
 
-List the main controls.
+- time stepping:
+  - thermal_erosion
+  - reaction_diffusion
+  - flocking
 
-Examples:
-- step size
-- angle
-- recursion depth
-- diffusion rate
-- seed
-- learning rate
-- number of agents
+- field systems:
+  - scalar_fields
+  - contour_gradient_viewer
+  - reaction_diffusion
+  - noise_terrain
 
----
-
-## Learning Insight
-
-What intuition should this build?
-
-Example:
-- repeated local rules can create global order
-- gradients point in the direction of steepest ascent
-- recursion can generate organic-looking branching structures
+- stability and convergence:
+  - thermal_erosion
+  - reaction_diffusion
+  - loss_landscape_descent (future)
 
 ---
 
-## Minimum Viable Version
+## AI & Learning
 
-What is the smallest version worth building?
+- optimization:
+  - contour_gradient_viewer
+  - loss_landscape_descent (future)
+
+- reinforcement learning:
+  - rl_grid_agent (future)
+  - maze_pathfinding
+  - flocking (behavior rules / future variants)
+
+- representation learning:
+  - pca_viewer (future)
+  - embedding_map (future)
+
+- function approximation:
+  - scalar_fields
+  - neural_surface_fit (future)
+
+- probabilistic reasoning:
+  - monte_carlo_area (future)
+  - monte_carlo_field_integration (future)
+  - particle_filter_demo (future)
+
+- multi-agent systems:
+  - flocking
+  - predator_prey (future)
+  - ant_colony_paths (future)
 
 ---
 
-## Extension Ideas
+## Emergence
 
-Optional future upgrades.
+- self-organization:
+  - reaction_diffusion
+  - flocking
+  - cave_generation (future)
+
+- cellular systems:
+  - cave_generation (future)
+  - game_of_life (future)
+
+- evolutionary systems:
+  - evolving_agents (future)
+  - genetic_art (future)
+
+- procedural growth:
+  - plant_growth_lsystem
+  - procedural_tree_growth (future)
 
 ---
 
-## Tags
+## Algorithms & Geometry
 
-Add concept tags.
+- interpolation:
+  - bezier_lab
 
-Examples:
-- math
-- calculus
-- ai
-- emergence
-- recursion
-- agents
-- probability
-- geometry
+- recursion:
+  - maze_generation within maze_pathfinding
+  - plant_growth_lsystem
+
+- graph search:
+  - maze_pathfinding
+
+- computational geometry:
+  - transform_rosettes
+  - voronoi_viewer (future)
+  - delaunay_viewer (future)
+
+- procedural generation:
+  - noise_terrain
+  - plant_growth_lsystem
+  - cave_generation (future)
+
+---
+
+## Rule for Expansion
+
+When a new concept appears:
+1. add or propose an experiment
+2. tag it
+3. link it here
+4. optionally assign it to one or more Gyms

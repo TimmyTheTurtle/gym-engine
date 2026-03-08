@@ -1,136 +1,280 @@
-# Discovery Queue
+# First Experiments
 
-This file captures new learning ideas without derailing current progress.
-
-Use it as an intake buffer for curiosity.
-
-When a new concept appears, add it here first instead of immediately restructuring the repo.
+These are the first ten experiments to implement because they produce strong visual payoff while building reusable infrastructure.
 
 ---
 
-## Intake Rule
+## 1. bezier_lab
+Gyms:
+- Prueitt Mathematics Gym
 
-For each new idea, capture:
+Concepts:
+- interpolation
+- affine combinations
+- parameterization
+- curve construction
 
-- concept
-- possible visual experiment
-- likely Gyms
-- difficulty
-- priority
-- dependencies
+Visual:
+- animated de Casteljau construction
+- draggable control points
+- final Bézier curve
 
-Then decide later whether to schedule it.
-
----
-
-## Candidate Ideas
-
-### plant_growth_lsystem
-- concept:
-  - recursion
-  - grammars
-  - procedural growth
-  - emergence
-- visual experiment:
-  - a branching plant generated over iterations
-- likely Gyms:
-  - Algorithms & Geometry Gym
-  - Emergence Gym
-  - Simulation Gym
-- difficulty:
-  - low to medium
-- dependencies:
-  - line rendering
-  - transform stack
-
-### loss_landscape_descent
-- concept:
-  - optimization
-  - gradients
-  - learning dynamics
-- visual experiment:
-  - particles descending a scalar loss surface
-- likely Gyms:
-  - Prueitt Mathematics Gym
-  - AI & Learning Gym
-- difficulty:
-  - medium
-- dependencies:
-  - scalar field renderer
-  - gradient viewer
-
-### neural_decision_boundaries
-- concept:
-  - classification
-  - function approximation
-  - learning
-- visual experiment:
-  - a classifier learning colored regions over time
-- likely Gyms:
-  - AI & Learning Gym
-- difficulty:
-  - medium
-- dependencies:
-  - plotting
-  - training loop
-  - color field rendering
-
-### ant_colony_paths
-- concept:
-  - swarm intelligence
-  - path optimization
-  - decentralized systems
-- visual experiment:
-  - ants laying paths and converging on efficient routes
-- likely Gyms:
-  - Emergence Gym
-  - AI & Learning Gym
-  - Algorithms & Geometry Gym
-- difficulty:
-  - medium
-- dependencies:
-  - agent loop
-  - grid or graph world
-
-### gravity_nbody
-- concept:
-  - force accumulation
-  - numerical integration
-  - emergent structure
-- visual experiment:
-  - orbiting particles and galaxy-like motion
-- likely Gyms:
-  - Simulation Gym
-  - Emergence Gym
-- difficulty:
-  - medium
-- dependencies:
-  - particle loop
-  - vector math
-
-### pca_viewer
-- concept:
-  - dimensionality reduction
-  - eigenvectors
-  - representation
-- visual experiment:
-  - point clouds projected into 2D
-- likely Gyms:
-  - AI & Learning Gym
-  - Data / Visualization support track
-  - Prueitt Mathematics Gym
-- difficulty:
-  - medium
-- dependencies:
-  - point cloud renderer
-  - matrix math
+Builds:
+- 2D line rendering
+- point rendering
+- handles
+- animation controls
 
 ---
 
-## Promotion Rule
+## 2. parametric_curves
+Gyms:
+- Prueitt Mathematics Gym
 
-An idea moves from Discovery Queue into the repo when:
-- the visual result is clear
-- the concept value is strong
-- dependencies are mostly available
-- it will not require backtracking over completed work
+Concepts:
+- trig
+- parametric systems
+- sampling
+- numerical arc length
+
+Visual:
+- Lissajous curves
+- spirals
+- roses
+- hypotrochoids
+
+Builds:
+- curve sampler
+- parameter presets
+
+---
+
+## 3. transform_rosettes
+Gyms:
+- Prueitt Mathematics Gym
+- Algorithms & Geometry Gym
+
+Concepts:
+- transforms
+- matrix multiplication
+- composition
+- symmetry
+
+Visual:
+- rosettes
+- tunnels
+- repeated transformed motifs
+
+Builds:
+- matrix utilities
+- instance rendering
+
+---
+
+## 4. scalar_fields
+Gyms:
+- Prueitt Mathematics Gym
+- Simulation Gym
+- AI & Learning Gym
+
+Concepts:
+- functions of two variables
+- sampling
+- field representation
+
+Visual:
+- grayscale and false-color fields
+- hills, saddles, waves
+
+Builds:
+- grid sampling
+- image buffer rendering
+- function presets
+
+---
+
+## 5. contour_gradient_viewer
+Gyms:
+- Prueitt Mathematics Gym
+- AI & Learning Gym
+
+Concepts:
+- gradients
+- partial derivatives
+- optimization intuition
+
+Visual:
+- contour lines
+- gradient arrows
+- particles following ascent/descent
+
+Builds:
+- finite differences
+- vector glyphs
+- simple particle stepping
+
+---
+
+## 6. noise_terrain
+Gyms:
+- Simulation Gym
+- Emergence Gym
+
+Concepts:
+- randomness
+- smoothing
+- procedural terrain
+
+Visual:
+- terrain-like scalar fields
+- cloud and heightmap patterns
+
+Builds:
+- RNG helpers
+- filters
+- terrain palettes
+
+---
+
+## 7. thermal_erosion
+Gyms:
+- Simulation Gym
+- Prueitt Mathematics Gym
+
+Concepts:
+- gradients
+- stability
+- iterative simulation
+- local rules
+
+Visual:
+- terrain relaxing over time
+
+Builds:
+- simulation stepping
+- double buffering
+- neighborhood operations
+
+---
+
+## 8. maze_pathfinding
+Gyms:
+- Algorithms & Geometry Gym
+- AI & Learning Gym
+
+Concepts:
+- recursion
+- graph search
+- planning
+- exploration
+
+Visual:
+- maze generation
+- frontier expansion
+- final path
+
+Builds:
+- tile grid
+- search utilities
+- overlays
+
+---
+
+## 9. reaction_diffusion
+Gyms:
+- Simulation Gym
+- Emergence Gym
+- Prueitt Mathematics Gym
+
+Concepts:
+- coupled fields
+- diffusion
+- emergence
+- iterative systems
+
+Visual:
+- spots
+- stripes
+- organic skin-like patterns
+
+Builds:
+- multi-field grids
+- PDE-style stepping
+- color mapping
+
+---
+
+## 10. flocking
+Gyms:
+- Emergence Gym
+- AI & Learning Gym
+
+Concepts:
+- multi-agent systems
+- local rules
+- self-organization
+- vector behavior
+
+Visual:
+- coordinated flock motion
+- trails
+- obstacle avoidance later
+
+Builds:
+- agent update loop
+- neighbor queries
+- debug vectors
+
+---
+
+## 11. plant_growth_lsystem
+Gyms:
+- Algorithms & Geometry Gym
+- Emergence Gym
+- Simulation Gym
+
+Concepts:
+- recursion
+- grammars
+- procedural growth
+- emergence
+
+Visual:
+- plant-like branching structures over iterations
+
+Builds:
+- turtle graphics
+- transform stack
+- recursive rendering
+
+This one is intentionally listed early as a curiosity-friendly expansion candidate.
+
+---
+
+## Recommended Build Order
+
+1. bezier_lab
+2. parametric_curves
+3. transform_rosettes
+4. scalar_fields
+5. contour_gradient_viewer
+6. noise_terrain
+7. thermal_erosion
+8. maze_pathfinding
+9. reaction_diffusion
+10. flocking
+11. plant_growth_lsystem
+
+---
+
+## First Milestone
+
+### Visual Playground v0.1
+Must include:
+- bezier_lab
+- parametric_curves
+- transform_rosettes
+- scalar_fields
+- noise_terrain
+
+That is enough to make the repo feel alive immediately.
