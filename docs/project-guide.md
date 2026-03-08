@@ -481,3 +481,199 @@ Then summarize:
 
 Do not write code yet.
 ```
+
+---Test---
+
+# Gym Engine Agent Understanding Test
+
+This test verifies whether an AI agent truly understands the Gym Engine architecture and ontology.
+
+The goal is to ensure the agent respects the system design:
+
+Concept → Experiment → Lab → Gym
+
+Experiments are the atomic runnable units of the system.
+
+Labs and Gyms are taxonomy layers used for conceptual organization.
+
+Experiments may belong to multiple Labs and multiple Gyms.
+
+The repository should grow primarily by **adding experiments**, not by restructuring the taxonomy.
+
+---
+
+# The Test Prompt
+
+Give the agent the following prompt in a new session:
+
+```
+A learner using Gym Engine becomes curious about modeling plant growth.
+
+Explain how this concept should be added to the repository.
+
+Your answer must include:
+
+1. the Concept that should be introduced
+2. the Experiment that should be created
+3. whether a new Lab is needed
+4. which Gyms the experiment belongs to
+5. what documentation files should be updated
+
+Important constraints:
+
+- do NOT restructure existing folders
+- do NOT redesign the ontology
+- experiments remain the atomic unit
+```
+
+---
+
+# Correct Answer (Example)
+
+A correct answer should look roughly like the following.
+
+### Concept
+
+Introduce a concept related to procedural biological growth.
+
+Example concepts:
+
+- procedural_growth
+- plant_growth
+- branching_growth
+
+This concept represents algorithmic systems that simulate how plants or branching structures grow.
+
+---
+
+### Experiment
+
+Create a new experiment that visualizes plant growth.
+
+Example experiment names:
+
+- plant_growth_lsystem
+- plant_growth_space_colonization
+- branching_growth_simulation
+
+The experiment should:
+
+- produce visible plant-like structures
+- expose adjustable parameters such as branching angle, growth rate, and recursion depth
+- run independently like other experiments
+
+---
+
+### Lab
+
+Determine whether the experiment fits inside an existing lab.
+
+Possible options:
+
+Use an existing lab:
+
+- lsystem-lab
+
+or introduce a new lab if needed:
+
+- procedural-growth-lab
+
+Labs are conceptual groupings of related experiments.
+
+They do not own code and do not require restructuring existing experiments.
+
+---
+
+### Gyms
+
+The experiment should appear in multiple gyms because the concept overlaps disciplines.
+
+Possible gyms:
+
+Algorithms & Geometry Gym  
+- because L-systems and recursive branching structures are algorithmic geometry
+
+Emergence Gym  
+- because plant structure emerges from simple rules
+
+Simulation Gym  
+- if growth is simulated over time
+
+This demonstrates the design principle that experiments can belong to multiple gyms.
+
+---
+
+### Documentation Updates
+
+After adding the experiment, update the documentation that tracks conceptual coverage.
+
+Update:
+
+docs/experiment-registry.yaml
+
+Add an entry linking the experiment to its concepts, labs, and gyms.
+
+Example:
+
+```yaml
+plant_growth_lsystem:
+  concepts:
+    - procedural_growth
+    - recursion
+
+  labs:
+    - lsystem-lab
+
+  gyms:
+    - algorithms-geometry
+    - emergence
+```
+
+Also update:
+
+docs/concept-coverage.yaml
+
+Add or expand coverage for the procedural_growth concept.
+
+Example:
+
+```yaml
+procedural_growth:
+  coverage: low
+  experiments:
+    - plant_growth_lsystem
+```
+
+---
+
+# Key Signals of a Correct Understanding
+
+The agent's explanation should clearly indicate:
+
+- Experiments are the atomic runnable units.
+- Labs group related experiments conceptually.
+- Gyms group labs into broader training disciplines.
+- Experiments may belong to multiple labs and gyms.
+- The system grows by adding experiments rather than restructuring folders.
+
+---
+
+# Signs the Agent Did NOT Understand
+
+Incorrect answers may include suggestions such as:
+
+- creating a new "Plant Gym"
+- moving experiments into gym directories
+- reorganizing the repository structure
+- creating rigid course sequences
+
+These indicate the agent did not correctly ingest the ontology.
+
+If this happens, instruct the agent to reread:
+
+- docs/project-guide.md
+- docs/ontology.md
+- docs/context.md
+
+and repeat the test.
+
