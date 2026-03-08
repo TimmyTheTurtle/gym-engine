@@ -25,6 +25,54 @@ The project is designed to teach difficult concepts through:
 
 ---
 
+## Required Context Files
+
+Before proposing code changes or restructuring the repository,
+agents should read the following files to understand the project
+architecture and ontology:
+
+- docs/project-guide.md
+- docs/ontology.md
+- docs/experiment-registry.yaml
+- docs/concept-coverage.yaml
+- all files under gyms/
+- all files under labs/
+
+These documents define the conceptual architecture of the project.
+
+Agents must understand the following ontology before making changes:
+
+Concept → Experiment → Lab → Gym
+
+Definitions:
+
+Concept  
+An intellectual idea or skill being explored (ex: gradients, recursion).
+
+Experiment  
+The atomic runnable code unit that produces visual output.
+
+Lab  
+A focused conceptual grouping of related experiments.
+
+Gym  
+A broader training discipline that groups Labs.
+
+Important structural rules:
+
+- Experiments are implemented in code.
+- Labs and Gyms are taxonomy layers, not code ownership.
+- Experiments may belong to multiple Labs.
+- Labs may belong to multiple Gyms.
+- Do not reorganize source code so Gyms or Labs own experiments.
+- Prefer adding experiments rather than restructuring the taxonomy.
+
+If these rules are unclear, read:
+
+docs/project-guide.md
+
+---
+
 ## Core Rule
 
 Every meaningful module should produce visible feedback, or directly support something that does.
