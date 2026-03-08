@@ -1,4 +1,6 @@
-#include "renderer.hpp"
+#include "debug_renderer.hpp"
+
+#include <utility>
 
 #include <iomanip>
 #include <iostream>
@@ -6,23 +8,28 @@
 
 namespace engine::rendering {
 
-void Renderer::clear()
+void DebugRenderer::clear()
 {
     lines_.clear();
     points_.clear();
 }
 
-void Renderer::drawPoint(math::Vector2 position, math::Color color)
+void DebugRenderer::drawPoint(math::Vector2 position, math::Color color)
 {
     points_.push_back({position, color});
 }
 
-void Renderer::drawLine(math::Vector2 from, math::Vector2 to, math::Color color)
+void DebugRenderer::drawLine(math::Vector2 from, math::Vector2 to, math::Color color)
 {
     lines_.push_back({from, to, color});
 }
 
-void Renderer::present()
+void DebugRenderer::drawLabel(math::Vector2 position, std::string text, math::Color color)
+{
+    labels_.push_back({position, std::move(text), color});
+}
+
+void DebugRenderer::present()
 {
     std::cout << "Renderer drew " << lines_.size() << " line(s) and " << points_.size() << " point(s).\n";
     auto printVec = [](math::Vector2 value) {
@@ -45,8 +52,13 @@ void Renderer::present()
         std::cout << "  Point " << printVec(point.position) << " @" << printColor(point.color) << "\n";
     }
 
+    for (const auto& label : labels_) {
+        std::cout << "  Label \"" << label.text << "\" @" << printVec(label.position) << " -> " << printColor(label.color) << "\n";
+    }
+
     lines_.clear();
     points_.clear();
+    labels_.clear();
 }
 
 } // namespace engine::rendering

@@ -5,7 +5,11 @@
 #include "engine/rendering/renderer.hpp"
 
 #include <array>
+#include <cstddef>
+#include <iomanip>
 #include <memory>
+#include <sstream>
+#include <string>
 
 namespace experiments {
 
@@ -21,6 +25,33 @@ engine::math::Vector2 evaluateBezier(const std::array<engine::math::Vector2, 4>&
     const auto d = engine::math::lerp(a, b, t);
     const auto e = engine::math::lerp(b, c, t);
     return engine::math::lerp(d, e, t);
+}
+
+struct BezierLerpStages {
+    std::array<engine::math::Vector2, 3> first;
+    std::array<engine::math::Vector2, 2> second;
+    engine::math::Vector2 third;
+};
+
+BezierLerpStages evaluateBezierLerpStages(const std::array<engine::math::Vector2, 4>& controlPoints, float t)
+{
+    const auto& [p0, p1, p2, p3] = controlPoints;
+    const auto a = engine::math::lerp(p0, p1, t);
+    const auto b = engine::math::lerp(p1, p2, t);
+    const auto c = engine::math::lerp(p2, p3, t);
+
+    const auto d = engine::math::lerp(a, b, t);
+    const auto e = engine::math::lerp(b, c, t);
+    const auto f = engine::math::lerp(d, e, t);
+
+    return {{{a, b, c}}, {{d, e}}, f};
+}
+
+std::string formatControlPointLabel(std::size_t index, const engine::math::Vector2& point)
+{
+    std::ostringstream os;
+    os << "P" << index << ": (" << std::fixed << std::setprecision(2) << point.x << ", " << point.y << ")";
+    return os.str();
 }
 
 } // namespace
@@ -48,7 +79,20 @@ public:
     void render(engine::rendering::Renderer& renderer) override
     {
         const engine::math::Color curveColor{0.2f, 0.7f, 1.0f, 1.0f};
-        const engine::math::Color pointColor{1.0f, 0.6f, 0.1f, 1.0f};
+        const engine::math::Color controlPointColor{1.0f, 0.8f, 0.2f, 1.0f};
+        const engine::math::Color progressPointColor{1.0f, 0.6f, 0.1f, 1.0f};
+        const engine::math::Color controlLineColor{0.8f, 0.8f, 0.8f, 0.6f};
+        const engine::math::Color stageLineColor{0.25f, 0.85f, 0.6f, 0.9f};
+        const engine::math::Color crossLineColor{0.95f, 0.4f, 0.5f, 0.95f};
+        const engine::math::Color stagePointColor{0.9f, 0.9f, 0.4f, 1.0f};
+        const engine::math::Color secondStagePointColor{0.3f, 0.9f, 0.8f, 1.0f};
+        const engine::math::Color labelColor{0.05f, 0.05f, 0.05f, 1.0f};
+        const std::array<engine::math::Vector2, 4> labelOffsets = {
+            engine::math::Vector2{0.05f, 0.05f},
+            engine::math::Vector2{0.05f, -0.05f},
+            engine::math::Vector2{-0.12f, 0.06f},
+            engine::math::Vector2{-0.1f, -0.05f},
+        };
 
         auto previous = evaluateBezier(controlPoints_, 0.0f);
         constexpr int segments = 12;
@@ -59,7 +103,31 @@ public:
             previous = next;
         }
 
-        renderer.drawPoint(evaluateBezier(controlPoints_, progress_), pointColor);
+        const auto lerpStages = evaluateBezierLerpStages(controlPoints_, progress_);
+
+        for (size_t i = 0; i + 1 < controlPoints_.size(); ++i) {
+            renderer.drawLine(controlPoints_[i], controlPoints_[i + 1], controlLineColor);
+        }
+
+        renderer.drawLine(lerpStages.first[0], lerpStages.first[1], stageLineColor);
+        renderer.drawLine(lerpStages.first[1], lerpStages.first[2], stageLineColor);
+        renderer.drawLine(lerpStages.second[0], lerpStages.second[1], crossLineColor);
+
+        for (const auto& point : lerpStages.first) {
+            renderer.drawPoint(point, stagePointColor);
+        }
+        for (const auto& point : lerpStages.second) {
+            renderer.drawPoint(point, secondStagePointColor);
+        }
+
+        for (size_t i = 0; i < controlPoints_.size(); ++i) {
+            renderer.drawPoint(controlPoints_[i], controlPointColor);
+            const auto labelPosition = controlPoints_[i] + labelOffsets[i];
+            renderer.drawLine(controlPoints_[i], labelPosition, labelColor);
+            renderer.drawLabel(labelPosition, formatControlPointLabel(i, controlPoints_[i]), labelColor);
+        }
+
+        renderer.drawPoint(lerpStages.third, progressPointColor);
     }
 
 private:

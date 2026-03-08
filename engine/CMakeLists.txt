@@ -3,7 +3,8 @@ add_library(gym_engine_core STATIC
     core/experiment.cpp
     core/experiment_launcher.cpp
     math/vector2.cpp
-    rendering/renderer.cpp
+    rendering/debug_renderer.cpp
+    rendering/svg_renderer.cpp
 )
 
 target_include_directories(gym_engine_core PUBLIC
