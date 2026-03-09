@@ -15,6 +15,11 @@ namespace experiments {
 
 namespace {
 
+// Keeping control points packed in a small array lets SIMD or GPU loaders read them as
+// a matrix. The repeated lerps below map directly to the Bernstein basis, which is just
+// a set of matrix weights applied to the 4x2 control-point matrix so we can push more
+// work through vectorized multiply-adds or simple kernels.
+
 engine::math::Vector2 evaluateBezier(const std::array<engine::math::Vector2, 4>& controlPoints, float t)
 {
     const auto& [p0, p1, p2, p3] = controlPoints;
@@ -99,6 +104,9 @@ public:
         for (int i = 1; i <= segments; ++i) {
             const float t = static_cast<float>(i) / segments;
             const auto next = evaluateBezier(controlPoints_, t);
+            // This loop is a micro-kernel; if we needed more segments, we could precompute
+            // the Bernstein coefficients once and execute all the lerps in a SIMD-friendly
+            // bulk operation.
             renderer.drawLine(previous, next, curveColor);
             previous = next;
         }
@@ -108,10 +116,13 @@ public:
         for (size_t i = 0; i + 1 < controlPoints_.size(); ++i) {
             renderer.drawLine(controlPoints_[i], controlPoints_[i + 1], controlLineColor);
         }
-
         renderer.drawLine(lerpStages.first[0], lerpStages.first[1], stageLineColor);
         renderer.drawLine(lerpStages.first[1], lerpStages.first[2], stageLineColor);
         renderer.drawLine(lerpStages.second[0], lerpStages.second[1], crossLineColor);
+
+        // Drawing the intermediate stages highlights the data dependencies; those same
+        // points are candidates for shared registers when we move this computation
+        // into a threaded or GPU-backed pipeline.
 
         for (const auto& point : lerpStages.first) {
             renderer.drawPoint(point, stagePointColor);

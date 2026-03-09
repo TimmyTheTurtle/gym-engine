@@ -10,3 +10,7 @@ procedural growth
 flocking
 pathfinding
 optimization
+high performance computing
+multithreading
+concurrency issues
+gpu programming

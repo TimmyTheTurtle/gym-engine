@@ -6,6 +6,9 @@ concepts:
     experiments:
       - bezier_lab
       - parametric_curves
+      - bezier_subdivision
+      - curve_arc_length
+      - spline_playground
     labs:
       - bezier-lab
       - parametric-curves-lab
@@ -174,3 +177,153 @@ concepts:
     suggested_next:
       - space_colonization_tree
       - tropism_growth
+
+  curve subdivision:
+    status: planned
+    coverage: low
+    experiments:
+      - bezier_subdivision
+    labs:
+      - bezier-lab
+    gyms:
+      - prueitt-mathematics
+      - algorithms-geometry
+    notes: >
+      Helps learners see how local refinement gives smoother pieces and
+      understand how recursive subdivision preserves global shape.
+    suggested_next:
+      - adaptive_bezier
+
+  curve parameterization:
+    status: planned
+    coverage: low
+    experiments:
+      - curve_arc_length
+    labs:
+      - bezier-lab
+    gyms:
+      - prueitt-mathematics
+      - algorithms-geometry
+    notes: >
+      Reinforces the difference between equal-parameter steps and equal-distance
+      traversal along the curve.
+    suggested_next:
+      - constant_speed_sampler
+
+  splines:
+    status: planned
+    coverage: low
+    experiments:
+      - spline_playground
+    labs:
+      - bezier-lab
+    gyms:
+      - prueitt-mathematics
+      - algorithms-geometry
+    notes: >
+      Builds a bridge to piecewise curve systems and shows how continuity
+      conditions affect design.
+    suggested_next:
+      - basis_spline_explorer
+
+  matrix transforms:
+    status: active
+    coverage: medium
+    experiments:
+      - transform_rosettes
+      - contour_gradient_viewer
+      - bezier_lab
+    labs:
+      - transformation-lab
+      - bezier-lab
+    gyms:
+      - prueitt-mathematics
+      - algorithms-geometry
+    notes: >
+      Treated as a core analytic tool that surfaces in Bézier, transform,
+      and contour experiments whenever affine manipulations or local
+      coordinate systems need to be expressed.
+    suggested_next:
+      - matrix_transform_playground
+      - affine_grid_visualizer
+
+  high performance computing:
+    status: active
+    coverage: medium
+    experiments:
+      - reaction_diffusion
+      - noise_terrain
+      - thermal_erosion
+      - scalar_fields
+    labs:
+      - terrain-lab
+      - scalar-field-lab
+      - diffusion-lab
+    gyms:
+      - simulation
+      - emergence
+      - prueitt-mathematics
+    notes: >
+      Pervasive concern for grid and field experiments, where throughput,
+      cache usage, and vectorization determine whether visualizations stay
+      interactive.
+    suggested_next:
+      - parallel_scalar_fields
+      - distributed_diffusion
+
+  multithreading:
+    status: active
+    coverage: low
+    experiments:
+      - noise_terrain
+      - thermal_erosion
+      - reaction_diffusion
+    labs:
+      - terrain-lab
+      - diffusion-lab
+    gyms:
+      - simulation
+    notes: >
+      Surfaces shared-buffer safety, tile partitioning, and the coordination
+      patterns that make iterative simulations stable on multi-core systems.
+    suggested_next:
+      - threaded_noise_builder
+      - worker_pool_simulator
+
+  concurrency issues:
+    status: planned
+    coverage: low
+    experiments:
+      - thermal_erosion
+      - noise_terrain
+    labs:
+      - terrain-lab
+    gyms:
+      - simulation
+      - emergence
+    notes: >
+      Warrants attention whenever experiments split update loops across
+      cores; prepping learners to spot race conditions, deadlocks, and
+      memory hazards keeps multitasking reliable.
+    suggested_next:
+      - race_condition_demo
+
+  gpu programming:
+    status: planned
+    coverage: low
+    experiments:
+      - reaction_diffusion
+      - noise_terrain
+    labs:
+      - terrain-lab
+      - diffusion-lab
+    gyms:
+      - simulation
+      - emergence
+    notes: >
+      Treats shader-like compute and CUDA-style kernels as a future avenue
+      for accelerating field-based experiments, ensuring GPU literacy is
+      purposeful and directly tied to existing labs.
+    suggested_next:
+      - gpu_field_renderer
+      - shader_parameter_explorer

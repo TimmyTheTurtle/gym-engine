@@ -21,6 +21,28 @@ experiments:
       Demonstrates de Casteljau construction and nested interpolation
       to build Bézier curves and explore curve geometry.
 
+  bezier_subdivision:
+    concepts:
+      - interpolation
+      - curve subdivision
+
+    labs:
+      - bezier-lab
+
+    gyms:
+      - prueitt-mathematics
+      - algorithms-geometry
+
+    visual_output:
+      - subdivided control polygons
+      - recursive De Casteljau triangles
+      - residual distance bands
+
+    description: |
+      Guides learners through recursive subdivision so they can see
+      how a single Bézier segment is split while the overall shape
+      stays unchanged.
+
   scalar_fields:
     concepts:
       - multivariable functions
@@ -43,6 +65,51 @@ experiments:
     description: |
       Visualizes functions of two variables and explores gradients,
       contour maps, and field interpretation.
+
+  curve_arc_length:
+    concepts:
+      - interpolation
+      - curve parameterization
+
+    labs:
+      - bezier-lab
+
+    gyms:
+      - prueitt-mathematics
+      - algorithms-geometry
+
+    visual_output:
+      - constant-speed sampling markers
+      - velocity curves
+      - tangent vector overlays
+
+    description: |
+      Shows how parameter-space pacing differs from spatial pacing
+      and lets learners remap the parameter so traversal speed stays
+      constant.
+
+  spline_playground:
+    concepts:
+      - interpolation
+      - splines
+      - piecewise curves
+
+    labs:
+      - bezier-lab
+
+    gyms:
+      - prueitt-mathematics
+      - algorithms-geometry
+
+    visual_output:
+      - chained Bézier segments
+      - smoothness toggles (C0/C1/C2)
+      - knot-slider overlays
+
+    description: |
+      Invites learners to assemble piecewise curves using Bézier
+      segments, adjust continuity, and see how local edits stay local
+      when knots are placed carefully.
 
   reaction_diffusion:
     concepts:

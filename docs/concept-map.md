@@ -123,6 +123,10 @@ It exists to:
 
 - interpolation:
   - bezier_lab
+  - bezier_subdivision
+  - curve_arc_length
+  - spline_playground
+  - transform_rosettes
 
 - recursion:
   - maze_generation within maze_pathfinding
@@ -140,6 +144,45 @@ It exists to:
   - noise_terrain
   - plant_growth_lsystem
   - cave_generation (future)
+
+- curve subdivision:
+  - bezier_subdivision
+
+- curve parameterization:
+  - curve_arc_length
+
+- splines:
+  - spline_playground
+
+- matrix transforms:
+  - transform_rosettes
+  - contour_gradient_viewer
+
+---
+
+## Systems & Performance
+
+- high performance computing:
+  - reaction_diffusion
+  - noise_terrain
+  - thermal_erosion
+
+- multithreading:
+  - noise_terrain
+  - thermal_erosion
+
+- concurrency issues:
+  - thermal_erosion
+  - noise_terrain
+
+- gpu programming:
+  - reaction_diffusion
+  - noise_terrain
+
+These concepts are exercised implicitly across the lab slate whenever existing
+experiments push throughput, tilt work across threads, or suggest GPU-oriented
+optimizations. Treat them as shared practical concerns rather than isolated
+topics.
 
 ---
 
