@@ -1,3 +1,4 @@
+// x^m - y^n
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
     // 1. COORDINATES
@@ -37,6 +38,56 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
     // 6. FINAL COLOR MIXING
     vec3 lineColor = vec3(0.0, 0.0, 1.0); // Blue
+    vec3 finalRGB  = mix(background, lineColor, lineMask);
+    
+    fragColor = vec4(finalRGB, 1.0);
+}
+
+// Circle
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    // 1. COORDINATES & ASPECT RATIO
+    // Standard 0 to 1 coordinates
+    vec2 uv = fragCoord / iResolution.xy;
+    
+    // Create a "centered" coordinate system for the circle
+    // This moves (0,0) to the middle of the screen
+    vec2 p = uv - 0.5;
+    
+    // Fix aspect ratio so the circle isn't an oval
+    // We multiply X by (width/height) to make units square
+    float aspect = iResolution.x / iResolution.y;
+    p.x *= aspect;
+
+    // 2. BACKGROUND GRADIENT
+    // Define corner colors (Purple, Teal, Pink, Green)
+    vec3 colTopLeft     = vec3(0.7, 0.1, 0.9);
+    vec3 colTopRight    = vec3(0.1, 0.8, 0.7);
+    vec3 colBottomLeft  = vec3(0.7, 0.1, 0.4);
+    vec3 colBottomRight = vec3(0.1, 0.8, 0.1);
+
+    // Bilinear interpolation for a smooth 4-corner gradient
+    vec3 topRow    = mix(colTopLeft, colTopRight, uv.x);
+    vec3 bottomRow = mix(colBottomLeft, colBottomRight, uv.x);
+    vec3 background = mix(bottomRow, topRow, uv.y);
+    
+    // 3. THE CIRCLE EQUATION: x^2 + y^2 - r^2 = 0
+    float radius = 0.3;
+    // val is the "signed distance" from the circle edge
+    float val = dot(p, p) - pow(radius, 2.0);
+
+    // 4. PIXEL-PERFECT THICKNESS
+    // fwidth(val) estimates the change in 'val' per pixel.
+    // Dividing by fwidth converts the distance into "Number of Pixels".
+    float distInPixels = abs(val) / fwidth(val);
+
+    // 5. ANTI-ALIASED LINE MASK
+    // 1.0 = exactly on the line (center)
+    // 0.0 = more than 1 pixel away
+    float lineMask = smoothstep(1.0, 0.0, distInPixels);
+
+    // 6. FINAL COMPOSITION
+    vec3 lineColor = vec3(0.0); // Black
     vec3 finalRGB  = mix(background, lineColor, lineMask);
     
     fragColor = vec4(finalRGB, 1.0);
